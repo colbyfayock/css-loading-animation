@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head'
 
 export default function Home() {
+  const [firstLoad, updateFirstLoad] = useState(false);
   const [isLoading, updateIsLoading] = useState(true);
+
+  /**
+   * handleOnLoadingCheck
+   * @description Updates the state of loading using the checkbox
+   */
 
   function handleOnLoadingCheck({ currentTarget } = {}) {
     updateIsLoading(currentTarget.checked);
@@ -11,6 +17,13 @@ export default function Home() {
   let loadingClass = 'loading';
 
   if ( !isLoading ) loadingClass = '';
+
+  useEffect(() => {
+    setTimeout(() => {
+      updateIsLoading(false);
+      updateFirstLoad(true);
+    }, 2000);
+  }, [])
 
   return (
     <div className="container">
@@ -22,7 +35,12 @@ export default function Home() {
       <main>
         <h1>CSS Loading Animation</h1>
 
+        <p>
+          Pure CSS loading animation. Use it as a class to easily add an elegant loading state to your apps!
+        </p>
+
         <h2>CSS Snippet</h2>
+
         <pre>
           <code>
 {`
@@ -46,9 +64,15 @@ export default function Home() {
         </pre>
 
         <h2>Example</h2>
+
+        <p>
+          We'll trigger a loading state when this page first loads for 2 seconds. After
+          you can use this checkbox to toggle the loading state on and off.
+        </p>
+
         <p>
           <label className="loading-checkbox" htmlFor="is-loading">
-            <input id="is-loading" type="checkbox" onChange={handleOnLoadingCheck} checked={isLoading} /> Is Loading
+            <input id="is-loading" type="checkbox" onChange={handleOnLoadingCheck} checked={isLoading} disabled={!firstLoad} /> Is Loading
           </label>
         </p>
 
@@ -78,15 +102,7 @@ export default function Home() {
 
         <p className={loadingClass}>And then the battle's not so bad? Bite my shiny metal ass. OK, this has gotta stop. I'm going to remind Fry of his humanity the way only a woman can. This is the worst kind of discrimination: the kind against me!</p>
         <p className={loadingClass}>You're going back for the Countess, aren't you? Large bet on myself in round one. Hey, guess what you're accessories to. Kids don't turn rotten just from watching TV. Okay, I like a challenge. If rubbin' frozen dirt in your crotch is wrong, hey I don't wanna be right.</p>
-        <p className={loadingClass}>Of all the friends I've had… you're the first. We don't have a brig. Look, last night was a mistake. What are you hacking off? Is it my torso?! 'It is!' My precious torso! We can't compete with Mom! Her company is big and evil! Ours is small and neutral!</p>
-        <p className={loadingClass}>When the lights go out, it's nobody's business what goes on between two consenting adults. What's with you kids? Every other day it's food, food, food. Alright, I'll get you some stupid food. In your time, yes, but nowadays shut up! Besides, these are adult stemcells, harvested from perfectly healthy adults whom I killed for their stemcells.</p>
-        <p className={loadingClass}>I daresay that Fry has discovered the smelliest object in the known universe! Doomsday device? Ah, now the ball's in Farnsworth's court! You don't know how to do any of those. We'll go deliver this crate like professionals, and then we'll go home.</p>
-        <p className={loadingClass}>Of all the friends I've had… you're the first. Ah, the 'Breakfast Club' soundtrack! I can't wait til I'm old enough to feel ways about stuff! Shut up and get to the point! You guys realize you live in a sewer, right?</p>
-        <p className={loadingClass}>You've killed me! Oh, you've killed me! Of all the friends I've had… you're the first. Perhaps, but perhaps your civilization is merely the sewer of an even greater society above you! There, now he's trapped in a book I wrote: a crummy world of plot holes and spelling errors!</p>
-        <p className={loadingClass}>It's toe-tappingly tragic! For the last time, I don't like lilacs! Your 'first' wife was the one who liked lilacs! Yep, I remember. They came in last at the Olympics, then retired to promote alcoholic beverages!</p>
-        <p className={loadingClass}>Bite my shiny metal ass. Daddy Bender, we're hungry. Daddy Bender, we're hungry. And then the battle's not so bad?</p>
-        <p className={loadingClass}>Ok, we'll go deliver this crate like professionals, and then we'll go ride the bumper cars. I'm Santa Claus! Calculon is gonna kill us and it's all everybody else's fault! Why yes! Thanks for noticing.</p>
-        <p className={loadingClass}>Yes, if you make it look like an electrical fire. When you do things right, people won't be sure you've done anything at all. You're going to do his laundry? Yeah, I do that with my stupidness. There's no part of that sentence I didn't like!</p>
+
         <footer>
           <p>
             Demo by <a href="https://twitter.com/colbyfayock">@colbyfayock</a>
