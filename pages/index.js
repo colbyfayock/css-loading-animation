@@ -1,6 +1,17 @@
+import React, { useState } from 'react';
 import Head from 'next/head'
 
 export default function Home() {
+  const [isLoading, updateIsLoading] = useState(true);
+
+  function handleOnLoadingCheck({ currentTarget } = {}) {
+    updateIsLoading(currentTarget.checked);
+  }
+
+  let loadingClass = 'loading';
+
+  if ( !isLoading ) loadingClass = '';
+
   return (
     <div className="container">
       <Head>
@@ -9,201 +20,82 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <h1>CSS Loading Animation</h1>
 
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
+        <h2>CSS Snippet</h2>
+        <pre>
+          <code>
+{`
+.loading {
+  color: transparent;
+  background: linear-gradient(100deg, #eceff1 30%, #f6f7f8 50%, #eceff1 70%);
+  background-size: 400%;
+  animation: loading 1.2s ease-in-out infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+`}
+          </code>
+        </pre>
+
+        <h2>Example</h2>
+        <p>
+          <label className="loading-checkbox" htmlFor="is-loading">
+            <input id="is-loading" type="checkbox" onChange={handleOnLoadingCheck} checked={isLoading} /> Is Loading
+          </label>
         </p>
 
-        <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+        <p className={loadingClass}>Eeeee! Now say "nuclear wessels"! Well I'da done better, but it's plum hard pleading a case while awaiting trial for that there incompetence. Yes! In your face, Gandhi! We can't compete with Mom! Her company is big and evil! Ours is small and neutral!</p>
+        <p className={loadingClass}>I'm sure those windmills will keep them cool. Fry, we have a crate to deliver. <strong> So, how 'bout them Knicks?</strong> <em> It's toe-tappingly tragic!</em> And then the battle's not so bad?</p>
+        <h3 className={loadingClass}>Then we'll go with that data file!</h3>
+        <p className={loadingClass}>Doomsday device? Ah, now the ball's in Farnsworth's court! Now what? Tell her you just want to talk. It has nothing to do with mating. You can crush me but you can't crush my spirit! Hey! I'm a porno-dealing monster, what do I care what you think?</p>
 
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+        <ol className={`${loadingClass} list-with-space`}>
+          <li>File not found.</li>
+          <li>It's toe-tappingly tragic!</li>
+          <li>Five hours? Aw, man! Couldn't you just get me the death penalty?</li>
+        </ol>
 
-          <a
-            href="https://github.com/zeit/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+        <span className={`${loadingClass} image-fixed-height`}>
+          <img width="600" height="300" src="/professor-farnsworth-futurama.png" />
+        </span>
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+        <h4 className={loadingClass}>Now, now. Perfectly symmetrical violence never solved anything.</h4>
+        <p className={loadingClass}>I can explain. It's very valuable. Well, let's just dump it in the sewer and say we delivered it. Or a guy who burns down a bar for the insurance money! Ah, yes! John Quincy Adding Machine. He struck a chord with the voters when he pledged not to go on a killing spree.</p>
+
+        <ul className="list-with-space">
+          <li className={loadingClass}>Soothe us with sweet lies.</li>
+          <li className={loadingClass}>Tell her you just want to talk. It has nothing to do with mating.</li>
+          <li className={loadingClass}>Tell her she looks thin.</li>
+        </ul>
+
+        <p className={loadingClass}>And then the battle's not so bad? Bite my shiny metal ass. OK, this has gotta stop. I'm going to remind Fry of his humanity the way only a woman can. This is the worst kind of discrimination: the kind against me!</p>
+        <p className={loadingClass}>You're going back for the Countess, aren't you? Large bet on myself in round one. Hey, guess what you're accessories to. Kids don't turn rotten just from watching TV. Okay, I like a challenge. If rubbin' frozen dirt in your crotch is wrong, hey I don't wanna be right.</p>
+        <p className={loadingClass}>Of all the friends I've had… you're the first. We don't have a brig. Look, last night was a mistake. What are you hacking off? Is it my torso?! 'It is!' My precious torso! We can't compete with Mom! Her company is big and evil! Ours is small and neutral!</p>
+        <p className={loadingClass}>When the lights go out, it's nobody's business what goes on between two consenting adults. What's with you kids? Every other day it's food, food, food. Alright, I'll get you some stupid food. In your time, yes, but nowadays shut up! Besides, these are adult stemcells, harvested from perfectly healthy adults whom I killed for their stemcells.</p>
+        <p className={loadingClass}>I daresay that Fry has discovered the smelliest object in the known universe! Doomsday device? Ah, now the ball's in Farnsworth's court! You don't know how to do any of those. We'll go deliver this crate like professionals, and then we'll go home.</p>
+        <p className={loadingClass}>Of all the friends I've had… you're the first. Ah, the 'Breakfast Club' soundtrack! I can't wait til I'm old enough to feel ways about stuff! Shut up and get to the point! You guys realize you live in a sewer, right?</p>
+        <p className={loadingClass}>You've killed me! Oh, you've killed me! Of all the friends I've had… you're the first. Perhaps, but perhaps your civilization is merely the sewer of an even greater society above you! There, now he's trapped in a book I wrote: a crummy world of plot holes and spelling errors!</p>
+        <p className={loadingClass}>It's toe-tappingly tragic! For the last time, I don't like lilacs! Your 'first' wife was the one who liked lilacs! Yep, I remember. They came in last at the Olympics, then retired to promote alcoholic beverages!</p>
+        <p className={loadingClass}>Bite my shiny metal ass. Daddy Bender, we're hungry. Daddy Bender, we're hungry. And then the battle's not so bad?</p>
+        <p className={loadingClass}>Ok, we'll go deliver this crate like professionals, and then we'll go ride the bumper cars. I'm Santa Claus! Calculon is gonna kill us and it's all everybody else's fault! Why yes! Thanks for noticing.</p>
+        <p className={loadingClass}>Yes, if you make it look like an electrical fire. When you do things right, people won't be sure you've done anything at all. You're going to do his laundry? Yeah, I do that with my stupidness. There's no part of that sentence I didn't like!</p>
+        <footer>
+          <p>
+            Demo by <a href="https://twitter.com/colbyfayock">@colbyfayock</a>
+          </p>
+          <p>
+            Copy from <a href="https://www.google.com/search?q=futurama">Futurama</a> via <a href="http://fillerama.io/">Fillterama.io</a>
+          </p>
+        </footer>
       </main>
-
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-        </a>
-      </footer>
-
-      <style jsx>{`
-        .container {
-          min-height: 100vh;
-          padding: 0 0.5rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer img {
-          margin-left: 0.5rem;
-        }
-
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        .title a {
-          color: #0070f3;
-          text-decoration: none;
-        }
-
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
-        }
-
-        .title {
-          margin: 0;
-          line-height: 1.15;
-          font-size: 4rem;
-        }
-
-        .title,
-        .description {
-          text-align: center;
-        }
-
-        .description {
-          line-height: 1.5;
-          font-size: 1.5rem;
-        }
-
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-        }
-
-        .grid {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-
-          max-width: 800px;
-          margin-top: 3rem;
-        }
-
-        .card {
-          margin: 1rem;
-          flex-basis: 45%;
-          padding: 1.5rem;
-          text-align: left;
-          color: inherit;
-          text-decoration: none;
-          border: 1px solid #eaeaea;
-          border-radius: 10px;
-          transition: color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .card:hover,
-        .card:focus,
-        .card:active {
-          color: #0070f3;
-          border-color: #0070f3;
-        }
-
-        .card h3 {
-          margin: 0 0 1rem 0;
-          font-size: 1.5rem;
-        }
-
-        .card p {
-          margin: 0;
-          font-size: 1.25rem;
-          line-height: 1.5;
-        }
-
-        .logo {
-          height: 1em;
-        }
-
-        @media (max-width: 600px) {
-          .grid {
-            width: 100%;
-            flex-direction: column;
-          }
-        }
-      `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
     </div>
   )
 }
