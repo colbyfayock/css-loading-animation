@@ -1,4 +1,5 @@
 # CSS Loading Animation
+Pure CSS loading animation. Use it as a class to easily add an elegant loading state to your apps!
 
 ## Why did I deploy this as a React app?
 It was just easier for me to create a really basic example of toggling loading state. To use the loading animation itself, you do **not** need React. Mostly you'll need a way to dynamically add a CSS class.
