@@ -38,3 +38,7 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## More tutorials and walkthroughs
+* [Follow me on Twitter](https://twitter.com/colbyfayock)
+* [Subscribe on YouTube](https://www.youtube.com/colbyfayock)
